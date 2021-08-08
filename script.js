@@ -53,6 +53,16 @@ function checkCaptcha(src, dest) {
     return src === dest;
 }
 
+function addRemoveEvent(dest) {
+    dest.classList.add("alert-back-out");
+    setTimeout(() => {
+        try {
+            document.body.removeChild(dest);
+        }
+        catch(error) {}
+    }, 500);
+}
+
 function gradientFilter(ctx, colorBreakLocation) {
     let backgroundGradient = ctx.createLinearGradient(0, 0, WIDTH, 0);
     const baseColor = getRandomColor();
@@ -68,6 +78,46 @@ function gradientFilter(ctx, colorBreakLocation) {
     reverseBackgroundGradient.addColorStop(colorBreakLocation, backgroundEndColor);
     reverseBackgroundGradient.addColorStop(colorBreakLocation, backgroundStartColor);
     return reverseBackgroundGradient
+}
+
+function alertTop(text, contents, type) {
+    const $container = document.createElement('div');
+    $container.classList.add('alert-container');
+    $container.classList.add('alert-back-in');
+    
+    const $timerBackground = document.createElement('div');
+    $timerBackground.classList.add('alert-timer-background');
+    $timerBackground.classList.add(`alert-${type}`);
+    $timerBackground.innerHTML = `
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="timer-white" cx="13" cy="13" r="12" stroke="#FCFCFC"/>
+        </svg>`;
+    $container.appendChild($timerBackground);
+
+    const $titleText = document.createElement('p');
+    $titleText.classList.add('alert-title-text');
+    $titleText.innerText = text;
+    $container.appendChild($titleText);
+    
+    const $contentsText = document.createElement('p');
+    $contentsText.classList.add('alert-contents-text');
+    $contentsText.innerText = contents;
+    $container.appendChild($contentsText);
+
+    const $buttonContainer = document.createElement('div');
+    $buttonContainer.classList.add('alert-button-container');
+    $buttonContainer.classList.add(`alert-${type}`);
+    $buttonContainer.addEventListener('click', () => {
+        addRemoveEvent($container);
+    });
+
+    const $acceptText = document.createElement('p');
+    $acceptText.classList.add('alert-submit-button');
+    $acceptText.innerText = "확인";
+    $buttonContainer.appendChild($acceptText);
+    $container.appendChild($buttonContainer);
+    
+    return $container;
 }
 
 function loadCaptcha() {
@@ -111,16 +161,30 @@ function loadCaptcha() {
 window.onload = () => {
     let captchaCode = loadCaptcha();
     const $input = document.querySelector("input");
-    $input.addEventListener('input', (e) => {
-        if(checkCaptcha($input.value, captchaCode)) {
-            console.log("GOOD!");
-        }
-    });
 
     const $btn = document.querySelector(".acceptor");
     $btn.addEventListener('click', (e) => {
         if(checkCaptcha($input.value, captchaCode)) {
-            console.log("GOOD!");
+            const $alert = alertTop("문구가 맞았습니다!", "눈썰미가 좋으시군요! 문구가 맞았습니다!", "fine");
+            
+            document.body.appendChild($alert);
+            setTimeout(() => {
+                try {
+                    addRemoveEvent($alert);
+                }
+                catch {}
+            }, 3000)
+        }
+        else {
+            const $alert = alertTop("문구를 다시 확인해주세요!", "문구가 틀렸습니다. 문구를 다시 확인해주세요!", "warn");
+            
+            document.body.appendChild($alert);
+            setTimeout(() => {
+                try {
+                    addRemoveEvent($alert);
+                }
+                catch {}
+            }, 3000)
         }
     });
 

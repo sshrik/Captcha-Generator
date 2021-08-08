@@ -3,8 +3,8 @@
     padding: 0px;
 }
 
-.captcha-text, input, input::placeholder {
-    font-size: 18px;
+.captcha-text, input, input::placeholder, p {
+    font-size: 16px;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -15,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
 }
 
 .input-body {
@@ -73,3 +74,127 @@ button:active {
     overflow: hidden;
     /* transform: skew(30deg, 12deg); */
 }
+
+
+.alert-container{ 
+    z-index: 20;
+    position: fixed;
+    top: 80px;
+    width: 330px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #FCFCFC;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 0px 0px 0px;
+}
+  
+@keyframes tadaEvent {
+    0% {
+        top: -400px;
+    }
+    80%{
+        top: 170px;
+    }
+    90% {
+        top: 60px;
+    }
+    100% {
+        top: 80px;
+    }
+}
+  
+@keyframes tadaOutEvent {
+    0% {
+        top: 80px;
+    }
+    20%{
+        top: 170px;
+    }
+    100% {
+        top: -400px;
+    }
+}
+
+.alert-back-in {
+    animation-name: tadaEvent;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+.alert-back-out {
+    animation-name: tadaOutEvent;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+.alert-title-text {
+    color: #333333;
+    font-weight: 800;
+    font-size: 20px;
+    margin: 18px 40px;
+}
+
+.alert-contents-text {
+    color: #333333;
+    margin: 0px 40px;
+}
+
+.alert-submit-button {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.alert-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.alert-warn {
+    background-color: #CA3421;
+}
+
+.alert-fine {
+    background-color: #2AC1BC;
+}
+  
+.alert-timer-background {
+    width: 34px;
+    height: 34px;
+    border-radius: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-white {
+    stroke-dasharray: 0px 70px;
+    transform-origin: center;
+    transform: rotate(-90deg);
+  
+    animation-name: timerEvent;
+    animation-duration: 3s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    stroke-width: 3px;
+}
+  
+@keyframes timerEvent {
+    0%{
+        stroke-dasharray: 0px 75px;
+    }
+    100%{
+        stroke-dasharray: 75px 0px;
+        stroke-dashoffset: 0px;
+    }
+} 
