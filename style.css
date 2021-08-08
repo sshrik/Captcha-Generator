@@ -1,0 +1,200 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.captcha-text, input, input::placeholder, p {
+    font-size: 16px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+input, input:focus {
+    width: 200px;
+    height: 24px;
+    padding: 6px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+}
+
+button {
+    border-radius: 2.4px;
+    background-color: #e3e3e3;
+    border: none;
+    cursor: pointer;
+    transition-duration: .1s;
+    font-weight: 700;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    transform: translate3d(0, 5px, 0);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0), 0px 4px 20px rgba(0, 0, 0, 0);
+}
+
+.acceptor {
+    width: 48px;
+    height: 36px;
+    margin-right: 10px;
+}
+
+.regen {
+    width: 120px;
+    height: 36px;
+}
+
+.captcha-text {
+    font-family: 'Black Han Sans', sans-serif;
+    width: 140px;
+    height: 24px;
+}
+
+.captcha-body{
+    width: 140px;
+    height: 24px;
+    overflow: hidden;
+    /* transform: skew(30deg, 12deg); */
+}
+
+
+.alert-container{ 
+    z-index: 20;
+    position: fixed;
+    top: 80px;
+    width: 330px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #FCFCFC;
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 0px 0px 0px;
+}
+  
+@keyframes tadaEvent {
+    0% {
+        top: -400px;
+    }
+    80%{
+        top: 170px;
+    }
+    90% {
+        top: 60px;
+    }
+    100% {
+        top: 80px;
+    }
+}
+  
+@keyframes tadaOutEvent {
+    0% {
+        top: 80px;
+    }
+    20%{
+        top: 170px;
+    }
+    100% {
+        top: -400px;
+    }
+}
+
+.alert-back-in {
+    animation-name: tadaEvent;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+.alert-back-out {
+    animation-name: tadaOutEvent;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+.alert-title-text {
+    color: #333333;
+    font-weight: 800;
+    font-size: 20px;
+    margin: 18px 40px;
+}
+
+.alert-contents-text {
+    color: #333333;
+    margin: 0px 40px;
+}
+
+.alert-submit-button {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.alert-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.alert-warn {
+    background-color: #CA3421;
+}
+
+.alert-fine {
+    background-color: #2AC1BC;
+}
+  
+.alert-timer-background {
+    width: 34px;
+    height: 34px;
+    border-radius: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-white {
+    stroke-dasharray: 0px 70px;
+    transform-origin: center;
+    transform: rotate(-90deg);
+  
+    animation-name: timerEvent;
+    animation-duration: 3s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    stroke-width: 3px;
+}
+  
+@keyframes timerEvent {
+    0%{
+        stroke-dasharray: 0px 75px;
+    }
+    100%{
+        stroke-dasharray: 75px 0px;
+        stroke-dashoffset: 0px;
+    }
+} 
