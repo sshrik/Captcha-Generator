@@ -3,7 +3,7 @@
     padding: 0px;
 }
 
-.captcha, input, input::placeholder {
+.captcha-text, input, input::placeholder {
     font-size: 18px;
     font-family: 'Nanum Gothic', sans-serif;
 }
@@ -51,4 +51,8 @@ button {
 button:active {
     transform: translate3d(0, 5px, 0);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0), 0px 4px 20px rgba(0, 0, 0, 0);
+}
+
+.captcha-text {
+    font-family: 'Black Han Sans', sans-serif;
 }
