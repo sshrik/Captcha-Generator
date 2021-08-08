@@ -3,6 +3,28 @@ const STRING_BANK = "가개갸거게겨고괴괘교구귀궤규그긔기나내�
 const WIDTH = 140;
 const HEIGHT = 24;
 
+function getRandomColor() {
+    const color = {
+        r: Math.floor(Math.random() * 255), 
+        g: Math.floor(Math.random() * 255), 
+        b: Math.floor(Math.random() * 255)
+    };
+    return color;
+}
+
+function colorToString(color) {
+    return `
+    #${color.r.toString(16).padStart(2, '0')}${color.g.toString(16).padStart(2, '0')}${color.b.toString(16).padStart(2, '0')}`;
+}
+
+function getReverseColor(color) {
+    const rColor = {
+        r: 255 - color.r,
+        g: 255 - color.g,
+        b: 255 - color.b,
+    }
+    return rColor;
+}
 
 function getOneLetter() {
     const index = Math.floor(Math.random() * STRING_BANK.length);
@@ -24,8 +46,9 @@ function checkCaptcha(src, dest) {
 
 function gradientFilter(ctx) {
     let backgroundGradient = ctx.createLinearGradient(0, 0, WIDTH, 0);
-    const backgroundStartColor = "#000000";
-    const backgroundEndColor = "#FFFFFF";
+    const baseColor = getRandomColor();
+    const backgroundStartColor = colorToString(baseColor);
+    const backgroundEndColor = colorToString(getReverseColor(baseColor));
     backgroundGradient.addColorStop(0, backgroundStartColor);
     backgroundGradient.addColorStop(1, backgroundEndColor);
 
@@ -52,7 +75,7 @@ function loadCaptcha() {
     // 글자를 작성
     ctx.font = '16px Black Han Sans';
     ctx.fillStyle = reverseBackgroundGradient;
-    ctx.fillText(captchaCode, 0, 20);
+    ctx.fillText(captchaCode, 5, 20);
     return captchaCode;
 }
 
