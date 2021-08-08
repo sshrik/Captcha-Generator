@@ -21,8 +21,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 24px;
+    flex-direction: column;
     margin-top: 10px;
 }
 
@@ -33,12 +32,10 @@ input, input:focus {
     border: none;
     outline: none;
     border-bottom: 1px solid #333;
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 button {
-    width: 48px;
-    height: 36px;
     border-radius: 2.4px;
     background-color: #e3e3e3;
     border: none;
@@ -51,6 +48,17 @@ button {
 button:active {
     transform: translate3d(0, 5px, 0);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0), 0px 4px 20px rgba(0, 0, 0, 0);
+}
+
+.acceptor {
+    width: 48px;
+    height: 36px;
+    margin-right: 10px;
+}
+
+.regen {
+    width: 120px;
+    height: 36px;
 }
 
 .captcha-text {
