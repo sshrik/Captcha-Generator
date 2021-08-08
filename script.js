@@ -15,30 +15,59 @@ function genKoreanCaptcha() {
     return result;
 }
 
+function genOneCaptchaCode(captchaLetter) {
+
+}
+
+function captchaElementGenerator(captchaCode) {
+    let reulst = '';
+
+}
+
 function checkCaptcha(src, dest) {
     return src === dest;
 }
 
 window.onload = () => {
     const $captchaBody = document.querySelector(".captcha-body");
+    const $body = document.body;
+    $body.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+    });
+
+    $body.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+        return false;
+    });
+
+    $body.addEventListener('selectstart', (e) => {
+        e.preventDefault();
+        return false;
+    });
+
     const $captchaText = $captchaBody.querySelector('.captcha-text');
-    $captchaText.innerText = genKoreanCaptcha();
+    const captchaCode = genKoreanCaptcha();
+    // $captchaText.innerText = captchaCode;
     
     const $input = document.querySelector("input");
     $input.addEventListener('input', (e) => {
-        const textValue = e.target.value;
-
-        if(checkCaptcha($captchaText.innerText, textValue)) {
+        if(checkCaptcha($input.value, captchaCode)) {
             console.log("GOOD!");
         }
     });
 
     const $btn = document.querySelector("button");
     $btn.addEventListener('click', (e) => {
-        const textValue = $input.value;
-
-        if(checkCaptcha($captchaText.innerText, textValue)) {
+        if(checkCaptcha($input.value, captchaCode)) {
             console.log("GOOD!");
         }
     });
+
+    const $canvasText = document.querySelector(".captcha-text");
+    const ctx = $canvasText.getContext('2d');
+    $canvasText.width = 140;
+    $canvasText.height = 24;
+    ctx.font = '16px Black Han Sans';
+    ctx.fillText(captchaCode, 0, 20);
 }

@@ -55,4 +55,12 @@ button:active {
 
 .captcha-text {
     font-family: 'Black Han Sans', sans-serif;
+    width: 140px;
+    height: 24px;
+}
+
+.captcha-body{
+    width: 140px;
+    height: 24px;
+    overflow: hidden;
 }
