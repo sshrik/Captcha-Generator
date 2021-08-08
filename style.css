@@ -1,0 +1,9 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.captcha, input, input::placeholder {
+    font-size: 14px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
