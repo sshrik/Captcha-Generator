@@ -15,41 +15,23 @@ function genKoreanCaptcha() {
     return result;
 }
 
-function genOneCaptchaCode(captchaLetter) {
-
-}
-
-function captchaElementGenerator(captchaCode) {
-    let reulst = '';
-
-}
-
 function checkCaptcha(src, dest) {
     return src === dest;
 }
 
-window.onload = () => {
-    const $captchaBody = document.querySelector(".captcha-body");
-    const $body = document.body;
-    $body.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        return false;
-    });
-
-    $body.addEventListener('dragstart', (e) => {
-        e.preventDefault();
-        return false;
-    });
-
-    $body.addEventListener('selectstart', (e) => {
-        e.preventDefault();
-        return false;
-    });
-
-    const $captchaText = $captchaBody.querySelector('.captcha-text');
+function loadCaptcha() {
     const captchaCode = genKoreanCaptcha();
-    // $captchaText.innerText = captchaCode;
-    
+    const $canvasText = document.querySelector(".captcha-text");
+    const ctx = $canvasText.getContext('2d');
+    $canvasText.width = 140;
+    $canvasText.height = 24;
+    ctx.font = '16px Black Han Sans';
+    ctx.fillText(captchaCode, 0, 20);
+    return captchaCode;
+}
+
+window.onload = () => {
+    const captchaCode = loadCaptcha();
     const $input = document.querySelector("input");
     $input.addEventListener('input', (e) => {
         if(checkCaptcha($input.value, captchaCode)) {
@@ -64,10 +46,4 @@ window.onload = () => {
         }
     });
 
-    const $canvasText = document.querySelector(".captcha-text");
-    const ctx = $canvasText.getContext('2d');
-    $canvasText.width = 140;
-    $canvasText.height = 24;
-    ctx.font = '16px Black Han Sans';
-    ctx.fillText(captchaCode, 0, 20);
 }
