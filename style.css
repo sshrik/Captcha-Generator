@@ -4,6 +4,51 @@
 }
 
 .captcha, input, input::placeholder {
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Nanum Gothic', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 24px;
+    margin-top: 10px;
+}
+
+input, input:focus {
+    width: 200px;
+    height: 24px;
+    padding: 6px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #333;
+    margin-right: 10px;
+}
+
+button {
+    width: 48px;
+    height: 36px;
+    border-radius: 2.4px;
+    background-color: #e3e3e3;
+    border: none;
+    cursor: pointer;
+    transition-duration: .1s;
+    font-weight: 700;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    transform: translate3d(0, 5px, 0);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0), 0px 4px 20px rgba(0, 0, 0, 0);
 }

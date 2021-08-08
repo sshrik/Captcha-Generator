@@ -9,4 +9,30 @@ function genKoreanCaptcha() {
     return result;
 }
 
-console.log(genKoreanCaptcha());
+function checkCaptcha(src, dest) {
+    return src === dest;
+}
+
+window.onload = () => {
+    const $captchaBody = document.querySelector(".captcha-body");
+    const $captchaText = $captchaBody.querySelector('.captcha-text');
+    $captchaText.innerText = genKoreanCaptcha();
+    
+    const $input = document.querySelector("input");
+    $input.addEventListener('input', (e) => {
+        const textValue = e.target.value;
+
+        if(checkCaptcha($captchaText.innerText, textValue)) {
+            console.log("GOOD!");
+        }
+    });
+
+    const $btn = document.querySelector("button");
+    $btn.addEventListener('click', (e) => {
+        const textValue = $input.value;
+
+        if(checkCaptcha($captchaText.innerText, textValue)) {
+            console.log("GOOD!");
+        }
+    });
+}
