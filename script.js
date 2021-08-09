@@ -89,8 +89,8 @@ function alertTop(text, contents, type) {
     $timerBackground.classList.add('alert-timer-background');
     $timerBackground.classList.add(`alert-${type}`);
     $timerBackground.innerHTML = `
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle class="timer-white" cx="13" cy="13" r="12" stroke="#FCFCFC"/>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="timer-white" cx="14" cy="14" r="12" stroke="#FCFCFC"/>
         </svg>`;
     $container.appendChild($timerBackground);
 
@@ -165,7 +165,7 @@ window.onload = () => {
     const $btn = document.querySelector(".acceptor");
     $btn.addEventListener('click', (e) => {
         if(checkCaptcha($input.value, captchaCode)) {
-            const $alert = alertTop("문구가 맞았습니다!", "눈썰미가 좋으시군요! 문구가 맞았습니다!", "fine");
+            const $alert = alertTop("문구가 맞았습니다!", "눈썰미가 좋으시군요!", "fine");
             
             document.body.appendChild($alert);
             setTimeout(() => {
@@ -176,7 +176,7 @@ window.onload = () => {
             }, 3000)
         }
         else {
-            const $alert = alertTop("문구를 다시 확인해주세요!", "문구가 틀렸습니다. 문구를 다시 확인해주세요!", "warn");
+            const $alert = alertTop("문구가 틀렸습니다!", "문구를 다시 확인해주세요!", "warn");
             
             document.body.appendChild($alert);
             setTimeout(() => {
