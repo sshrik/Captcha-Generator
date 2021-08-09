@@ -4,8 +4,12 @@
 }
 
 .captcha-text, input, input::placeholder, p {
+    color: #333;
     font-size: 16px;
     font-family: 'Nanum Gothic', sans-serif;
+}
+input::placeholder {
+    color: #aaa;
 }
 
 body {
@@ -32,6 +36,7 @@ input, input:focus {
     padding: 6px;
     border: none;
     outline: none;
+    appearance: none;
     border-bottom: 1px solid #333;
     margin-bottom: 10px;
 }
@@ -72,7 +77,6 @@ button:active {
     width: 140px;
     height: 24px;
     overflow: hidden;
-    /* transform: skew(30deg, 12deg); */
 }
 
 
